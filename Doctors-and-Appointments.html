@@ -1,0 +1,2147 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doctors - Health Hub</title>
+
+
+    <!-- ==========================================================
+                            TAILWIND
+    ========================================================== -->
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+    <!-- ==========================================================
+                            GOOGLE FONTS
+    ========================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ==========================================================
+                        TAILWIND CONFIG
+    ========================================================== -->
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        primary: "#003d9b",
+                        "primary-container": "#0052cc",
+
+                        background: "#f8f9ff",
+
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-highest": "#d3e4fe",
+
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#434654",
+
+                        "outline": "#737685",
+                        "outline-variant": "#c3c6d6",
+
+                        "secondary-fixed": "#adecff",
+                        "on-secondary-fixed": "#001f26"
+
+                    },
+
+                    fontFamily: {
+
+                        inter: ["Inter", "sans-serif"]
+
+                    }
+
+                }
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- ==========================================================
+                            CSS
+    ========================================================== -->
+
+    <style>
+
+        /* ==========================================================
+                            GLOBAL
+        ========================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            max-width: 100%;
+
+            overflow-x: hidden;
+
+        }
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            background: #f8f9ff;
+
+            color: #0b1c30;
+
+        }
+
+
+        .material-symbols-outlined {
+
+            font-variation-settings:
+                "FILL" 0,
+                "wght" 400,
+                "GRAD" 0,
+                "opsz" 24;
+
+            vertical-align: middle;
+
+        }
+
+
+        /* ==========================================================
+                        CAROUSEL CONTAINER
+        ========================================================== */
+
+        .carousel-container {
+
+            position: relative;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            padding: 50px 0 70px;
+
+        }
+
+
+        .carousel-track {
+
+            display: flex;
+
+            align-items: center;
+
+            width: 100%;
+
+            transition:
+                transform 0.5s ease;
+
+        }
+
+
+        /* ==========================================================
+                        CAROUSEL ITEM
+        ========================================================== */
+
+        .carousel-item {
+
+            flex: 0 0 60%;
+
+            min-width: 0;
+
+            padding: 0 12px;
+
+            opacity: 0.25;
+
+            transform: scale(0.82);
+
+            transition:
+                transform 0.5s ease,
+                opacity 0.5s ease;
+
+        }
+
+
+        .carousel-item.active {
+
+            opacity: 1;
+
+            transform: scale(1);
+
+            z-index: 10;
+
+        }
+
+
+        .carousel-item.prev-item {
+
+            opacity: 0.5;
+
+            transform: scale(0.84);
+
+        }
+
+
+        .carousel-item.next-item {
+
+            opacity: 0.5;
+
+            transform: scale(0.84);
+
+        }
+
+
+        .carousel-item.far-item {
+
+            opacity: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        /* ==========================================================
+                        DOCTOR CARD
+        ========================================================== */
+
+        .doctor-card {
+
+            display: block;
+
+            width: 100%;
+
+            max-width: 760px;
+
+            margin: 0 auto;
+
+            background: #ffffff;
+
+            border: 1px solid rgba(115, 118, 133, 0.25);
+
+            border-radius: 22px;
+
+            padding: 22px;
+
+            text-decoration: none;
+
+            color: #0b1c30;
+
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.06);
+
+            transition:
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+
+            overflow: hidden;
+
+        }
+
+
+        .doctor-card:hover {
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        /* ==========================================================
+                        DOCTOR IMAGE
+        ========================================================== */
+
+        .doctor-image-wrapper {
+
+            width: 100px;
+
+            height: 100px;
+
+            min-width: 100px;
+
+            overflow: hidden;
+
+            border-radius: 16px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .doctor-image {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            transition:
+                transform 0.4s ease;
+
+        }
+
+
+        .doctor-card:hover .doctor-image {
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* ==========================================================
+                    SPECIALTY + RATING
+        ========================================================== */
+
+        .doctor-top-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            width: 100%;
+
+        }
+
+
+        .doctor-specialty {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            max-width: 75%;
+
+            padding: 7px 12px;
+
+            border-radius: 999px;
+
+            background: #adecff;
+
+            color: #001f26;
+
+            font-size: 12px;
+
+            line-height: 16px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.04em;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+        }
+
+
+        .doctor-rating {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 3px;
+
+            flex-shrink: 0;
+
+            color: #003d9b;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .doctor-rating .material-symbols-outlined {
+
+            font-size: 18px;
+
+            font-variation-settings:
+                "FILL" 1,
+                "wght" 500,
+                "GRAD" 0,
+                "opsz" 24;
+
+        }
+
+
+        /* ==========================================================
+                            DOCTOR NAME
+        ========================================================== */
+
+        .doctor-name {
+
+            margin: 8px 0 3px;
+
+            font-size: 28px;
+
+            line-height: 34px;
+
+            font-weight: 600;
+
+            color: #0b1c30;
+
+            overflow-wrap: break-word;
+
+        }
+
+
+        /* ==========================================================
+                        QUALIFICATION
+        ========================================================== */
+
+        .doctor-qualification {
+
+            margin: 0;
+
+            color: #434654;
+
+            font-size: 15px;
+
+            line-height: 21px;
+
+            font-weight: 600;
+
+            white-space: normal;
+
+            overflow-wrap: break-word;
+
+        }
+
+
+        /* ==========================================================
+                            DIVIDER
+        ========================================================== */
+
+        .doctor-divider {
+
+            width: 100%;
+
+            height: 1px;
+
+            background: #e5e7eb;
+
+            margin: 18px 0 15px;
+
+        }
+
+
+        /* ==========================================================
+                        BOTTOM INFORMATION
+        ========================================================== */
+
+        .doctor-bottom {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            width: 100%;
+
+        }
+
+
+        .doctor-next {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #434654;
+
+            font-size: 15px;
+
+            line-height: 21px;
+
+            font-weight: 600;
+
+            min-width: 0;
+
+        }
+
+
+        .doctor-next .material-symbols-outlined {
+
+            font-size: 20px;
+
+            color: #434654;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .doctor-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            color: #003d9b;
+
+            font-size: 17px;
+
+            font-weight: 500;
+
+            white-space: nowrap;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .doctor-profile .material-symbols-outlined {
+
+            font-size: 23px;
+
+        }
+
+
+        /* ==========================================================
+                        CAROUSEL ARROWS
+        ========================================================== */
+
+        .carousel-arrow-container {
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 0;
+
+            right: 0;
+
+            transform: translateY(-50%);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 0 12px;
+
+            pointer-events: none;
+
+            z-index: 30;
+
+        }
+
+
+        .carousel-arrow {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            border: 1px solid #e1e4eb;
+
+            background: #ffffff;
+
+            color: #003d9b;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 8px 22px rgba(0, 0, 0, 0.10);
+
+            cursor: pointer;
+
+            pointer-events: auto;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .carousel-arrow:hover {
+
+            transform: scale(1.06);
+
+            box-shadow:
+                0 10px 28px rgba(0, 0, 0, 0.14);
+
+        }
+
+
+        .carousel-arrow:active {
+
+            transform: scale(0.95);
+
+        }
+
+
+        .carousel-arrow .material-symbols-outlined {
+
+            font-size: 28px;
+
+        }
+
+
+        /* ==========================================================
+                        GRID / CAROUSEL
+        ========================================================== */
+
+        .grid-container {
+
+            display: none;
+
+        }
+
+
+        .carousel-active .grid-container {
+
+            display: none;
+
+        }
+
+
+        .carousel-active .carousel-container {
+
+            display: block;
+
+        }
+
+
+        /* ==========================================================
+                            MOBILE
+        ========================================================== */
+
+        @media (max-width: 767px) {
+
+
+            /* ------------------------------------------------------
+                            PAGE
+            ------------------------------------------------------ */
+
+            main {
+
+                width: 100%;
+
+                max-width: 100%;
+
+                padding-left: 16px !important;
+
+                padding-right: 16px !important;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            PAGE HEADING
+            ------------------------------------------------------ */
+
+            main > header {
+
+                margin-bottom: 25px !important;
+
+            }
+
+
+            main > header h1 {
+
+                font-size: 34px !important;
+
+                line-height: 42px !important;
+
+            }
+
+
+            main > header p {
+
+                font-size: 16px !important;
+
+                line-height: 24px !important;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            FILTERS
+            ------------------------------------------------------ */
+
+            #specialists-section > section > div:first-child {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 12px;
+
+            }
+
+
+            #specialists-section > section > div:first-child > div {
+
+                width: 100%;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            #specialists-section select {
+
+                width: 100%;
+
+                max-width: 100%;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            CAROUSEL
+            ------------------------------------------------------ */
+
+            .carousel-container {
+
+                width: 100%;
+
+                padding: 25px 0 70px;
+
+                overflow: hidden;
+
+            }
+
+
+            .carousel-track {
+
+                width: 100%;
+
+                align-items: stretch;
+
+            }
+
+
+            .carousel-item {
+
+                flex: 0 0 100%;
+
+                width: 100%;
+
+                min-width: 0;
+
+                padding: 0 16px;
+
+                opacity: 0;
+
+                transform: scale(0.97);
+
+            }
+
+
+            .carousel-item.active {
+
+                opacity: 1;
+
+                transform: scale(1);
+
+            }
+
+
+            .carousel-item.prev-item,
+
+            .carousel-item.next-item,
+
+            .carousel-item.far-item {
+
+                opacity: 0;
+
+                transform: scale(0.97);
+
+            }
+
+
+            /* ------------------------------------------------------
+                            DOCTOR CARD
+            ------------------------------------------------------ */
+
+            .doctor-card {
+
+                width: 100%;
+
+                max-width: 100%;
+
+                margin: 0;
+
+                padding: 18px;
+
+                border-radius: 20px;
+
+            }
+
+
+            /* ------------------------------------------------------
+                    TOP SECTION
+
+                    Image on left.
+                    Information on right.
+            ------------------------------------------------------ */
+
+            .doctor-card > .doctor-main {
+
+                display: flex;
+
+                align-items: flex-start;
+
+                gap: 13px;
+
+                width: 100%;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            IMAGE
+            ------------------------------------------------------ */
+
+            .doctor-image-wrapper {
+
+                width: 82px;
+
+                height: 82px;
+
+                min-width: 82px;
+
+                max-width: 82px;
+
+                border-radius: 15px;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            INFORMATION
+            ------------------------------------------------------ */
+
+            .doctor-information {
+
+                flex: 1;
+
+                min-width: 0;
+
+                width: auto;
+
+            }
+
+
+            /* ------------------------------------------------------
+                        SPECIALTY + RATING
+            ------------------------------------------------------ */
+
+            .doctor-top-row {
+
+                width: 100%;
+
+                min-width: 0;
+
+                gap: 6px;
+
+            }
+
+
+            .doctor-specialty {
+
+                max-width: calc(100% - 45px);
+
+                font-size: 10px;
+
+                line-height: 15px;
+
+                padding: 5px 9px;
+
+                letter-spacing: 0.03em;
+
+            }
+
+
+            .doctor-rating {
+
+                font-size: 13px;
+
+                gap: 2px;
+
+            }
+
+
+            .doctor-rating .material-symbols-outlined {
+
+                font-size: 17px;
+
+            }
+
+
+            /* ------------------------------------------------------
+                        NAME
+            ------------------------------------------------------ */
+
+            .doctor-name {
+
+                margin-top: 8px;
+
+                margin-bottom: 3px;
+
+                font-size: 24px;
+
+                line-height: 29px;
+
+                font-weight: 600;
+
+                word-break: normal;
+
+                overflow-wrap: break-word;
+
+            }
+
+
+            /* ------------------------------------------------------
+                    QUALIFICATION / EXPERIENCE
+
+                    This is allowed to wrap.
+            ------------------------------------------------------ */
+
+            .doctor-qualification {
+
+                display: block;
+
+                width: 100%;
+
+                max-width: 100%;
+
+                margin: 0;
+
+                font-size: 13px;
+
+                line-height: 19px;
+
+                white-space: normal;
+
+                overflow: visible;
+
+                text-overflow: clip;
+
+                overflow-wrap: break-word;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            DIVIDER
+            ------------------------------------------------------ */
+
+            .doctor-divider {
+
+                margin: 17px 0 14px;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            BOTTOM
+            ------------------------------------------------------ */
+
+            .doctor-bottom {
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                justify-content: flex-start;
+
+                gap: 11px;
+
+                width: 100%;
+
+            }
+
+
+            .doctor-next {
+
+                width: 100%;
+
+                font-size: 14px;
+
+                line-height: 20px;
+
+                white-space: normal;
+
+                overflow-wrap: break-word;
+
+            }
+
+
+            .doctor-profile {
+
+                font-size: 18px;
+
+            }
+
+
+            /* ------------------------------------------------------
+                            ARROWS
+
+                    Keep them outside the important content.
+            ------------------------------------------------------ */
+
+            .carousel-arrow-container {
+
+                left: 0;
+
+                right: 0;
+
+                top: 50%;
+
+                padding: 0 2px;
+
+                pointer-events: none;
+
+            }
+
+
+            .carousel-arrow {
+
+                width: 46px;
+
+                height: 46px;
+
+            }
+
+
+            .carousel-arrow .material-symbols-outlined {
+
+                font-size: 24px;
+
+            }
+
+        }
+
+
+        /* ==========================================================
+                        320px / VERY SMALL MOBILE
+        ========================================================== */
+
+        @media (max-width: 360px) {
+
+
+            .carousel-container {
+
+                padding-top: 20px;
+
+            }
+
+
+            .carousel-item {
+
+                padding-left: 10px;
+
+                padding-right: 10px;
+
+            }
+
+
+            .doctor-card {
+
+                padding: 16px;
+
+                border-radius: 18px;
+
+            }
+
+
+            .doctor-image-wrapper {
+
+                width: 76px;
+
+                height: 76px;
+
+                min-width: 76px;
+
+                max-width: 76px;
+
+            }
+
+
+            .doctor-card > .doctor-main {
+
+                gap: 11px;
+
+            }
+
+
+            .doctor-specialty {
+
+                font-size: 9px;
+
+                line-height: 14px;
+
+                padding: 5px 8px;
+
+            }
+
+
+            .doctor-rating {
+
+                font-size: 12px;
+
+            }
+
+
+            .doctor-rating .material-symbols-outlined {
+
+                font-size: 16px;
+
+            }
+
+
+            .doctor-name {
+
+                font-size: 22px;
+
+                line-height: 27px;
+
+            }
+
+
+            .doctor-qualification {
+
+                font-size: 12px;
+
+                line-height: 18px;
+
+            }
+
+
+            .doctor-next {
+
+                font-size: 13px;
+
+                line-height: 19px;
+
+            }
+
+
+            .doctor-profile {
+
+                font-size: 17px;
+
+            }
+
+
+            .carousel-arrow {
+
+                width: 44px;
+
+                height: 44px;
+
+            }
+
+
+            .carousel-arrow .material-symbols-outlined {
+
+                font-size: 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================================
+                            NAVBAR
+========================================================== -->
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+
+    <nav
+        class="relative flex items-center justify-between px-4 md:px-10 h-20 max-w-7xl mx-auto"
+    >
+
+        <a
+            href="index.html"
+            class="flex items-center gap-2 text-primary text-2xl md:text-3xl font-bold"
+        >
+
+            <span
+                class="material-symbols-outlined"
+                style="font-variation-settings:'FILL' 1"
+            >
+                medical_services
+            </span>
+
+            <span>
+                Health Hub
+            </span>
+
+        </a>
+
+
+        <div
+            class="hidden md:flex gap-10 absolute left-1/2 -translate-x-1/2"
+        >
+
+            <a
+                href="index.html"
+                class="text-gray-700 hover:text-primary"
+            >
+                Home
+            </a>
+
+            <a
+                href="#"
+                class="text-primary font-bold border-b-2 border-primary pb-1"
+            >
+                Find A Doctor
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==========================================================
+                            MAIN
+========================================================== -->
+
+<main
+    class="max-w-7xl mx-auto px-4 md:px-10 py-10"
+>
+
+
+    <!-- ======================================================
+                        HEADING
+    ======================================================= -->
+
+    <header class="mb-10">
+
+        <h1
+            class="text-5xl font-bold text-blue-900 mb-2"
+        >
+            Our Specialists
+        </h1>
+
+        <p
+            class="text-lg text-gray-600 max-w-2xl"
+        >
+            Connect with our world-class medical professionals.
+            Expert care across over 40 medical specialties,
+            focused on your long-term health and wellbeing.
+        </p>
+
+    </header>
+
+
+
+    <!-- ======================================================
+                        SPECIALISTS
+    ======================================================= -->
+
+    <div
+        id="specialists-section"
+        class="carousel-active"
+    >
+
+        <section>
+
+
+            <!-- ==================================================
+                            FILTER BAR
+            ================================================== -->
+
+            <div
+                class="flex justify-between items-center bg-[#eff4ff] p-4 rounded-xl mb-5"
+            >
+
+                <div
+                    class="flex items-center gap-3 flex-wrap"
+                >
+
+                    <select
+                        id="specialty-filter"
+                        class="bg-white border border-gray-300 rounded-lg px-4 py-2"
+                    >
+
+                        <option value="all">
+                            All Specialities
+                        </option>
+
+                        <option value="Cardiology">
+                            Cardiology
+                        </option>
+
+                        <option value="Neurology">
+                            Neurology
+                        </option>
+
+                        <option value="Pediatrics">
+                            Pediatrics
+                        </option>
+
+                        <option value="Orthopedics">
+                            Orthopedics
+                        </option>
+
+                    </select>
+
+
+                    <select
+                        id="availability-filter"
+                        class="bg-white border border-gray-300 rounded-lg px-4 py-2"
+                    >
+
+                        <option value="all">
+                            Availability
+                        </option>
+
+                        <option value="Today">
+                            Today
+                        </option>
+
+                        <option value="Tomorrow">
+                            Tomorrow
+                        </option>
+
+                        <option value="Wednesday">
+                            This Week
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <span
+                    id="doctor-count"
+                    class="hidden sm:block text-sm text-gray-600"
+                >
+                    Showing 4 Specialists
+                </span>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                            CAROUSEL
+            ================================================== -->
+
+            <div
+                id="carousel-container"
+                class="carousel-container"
+            >
+
+                <div
+                    id="carousel-track"
+                    class="carousel-track"
+                ></div>
+
+
+                <!-- ==================================================
+                                ARROWS
+                ================================================== -->
+
+                <div
+                    class="carousel-arrow-container"
+                >
+
+                    <button
+                        id="carousel-prev"
+                        type="button"
+                        class="carousel-arrow"
+                        aria-label="Previous doctor"
+                    >
+
+                        <span class="material-symbols-outlined">
+                            arrow_back_ios_new
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        id="carousel-next"
+                        type="button"
+                        class="carousel-arrow"
+                        aria-label="Next doctor"
+                    >
+
+                        <span class="material-symbols-outlined">
+                            arrow_forward_ios
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                            GRID
+            ================================================== -->
+
+            <div
+                id="grid-container"
+                class="grid-container grid-cols-1 md:grid-cols-2 gap-6"
+            ></div>
+
+
+            <!-- ==================================================
+                            NO RESULTS
+            ================================================== -->
+
+            <div
+                id="no-results"
+                class="hidden text-center py-16"
+            >
+
+                <span
+                    class="material-symbols-outlined text-5xl text-gray-400"
+                >
+                    search_off
+                </span>
+
+                <h2 class="text-xl font-bold mt-4">
+                    No specialists found
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+                    Try changing your filters.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- ==========================================================
+                        JAVASCRIPT
+========================================================== -->
+
+<script>
+
+
+    /* ==========================================================
+                            DOCTORS
+    ========================================================== */
+
+    const doctors = [
+
+        {
+            name: "Dr. Sarah Mitchell",
+            specialty: "Cardiology",
+            qualification: "MD, FACC",
+            experience: "12 Years Exp.",
+            rating: "4.9",
+            next: "Tomorrow, 9:00 AM",
+            availability: "Tomorrow",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAHp69AkhZhbLTTUwbvudF7OGlQI0aXhssENnkYFFvYTAz4AzwUk1T8Jo-hgSu3DskpmnjZOmUqaq0fR5fmKXDn9OQH81ama0Et5U_4GMs4JnhW1CiIBzcVNGEJDRbtkJSilyEtvTUpQFN5Qx0QQ9sSl34DA4wUwvZYhzpYCIx5d8OwhojTxM41tMb5bDols2CRUQ3CLJXDlkTkneblkjE5jQzdeMLv6d-EkBVzVRFXBbvJye19AaUMaUGkrFuwwIK_eJ9V616qDuo"
+        },
+
+        {
+            name: "Dr. James Wilson",
+            specialty: "Neurology",
+            qualification: "PhD, Neurology",
+            experience: "15 Years Exp.",
+            rating: "4.8",
+            next: "Today, 2:30 PM",
+            availability: "Today",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCRHz0vBFerctmRhjwgHZK06IJdje1579-l4ddD3bPpqRI5CgjnaXdNeUGC_5Vduq4hYHsgDgZmIS59jdxCnqP969ydbsRaT8UK0pDXin-kqfsaF_wlNsSP0DOHWNUBUz2aRDjGvouqlzRliKY8WABISOyij0Yf-aCYf0gu7cS3MrSlxMShPnhD2sxpbv57yi6wHegNk65oX_CCK8IAZs1HDfPcT2zuOuwZfWuPtu0u322LZNzjzgVKmw3Lb_NDx9X3-QDCcQMGjCs"
+        },
+
+        {
+            name: "Dr. Elena Rodriguez",
+            specialty: "Pediatrics",
+            qualification: "MD, Pediatrics",
+            experience: "18 Years Exp.",
+            rating: "5.0",
+            next: "Wednesday, 10:00 AM",
+            availability: "Wednesday",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_zwcuMnoCl8XNQQq95TnHvacXPxHr4p-grVbvNc6WAxuW63cr7yKqIFkw33jzR-SVDBLphpVnq4WyBxhtII6p5j_l6jBhwOKQAABNaf_ICg2WCbPKunQM0H9Y0WNMzw6hyliD5DlutuOIvoohTmo51g1RqlPGdIb8b11-faGITvjQmks51mBAgsmm6RkYet4ooamgoGEeLGiZWshRyxuKPup3_k5vf1tTnxzXzY3Tt7IYskIYRTqAJfbG-A7Nn8pAdYsW-FHEgoM"
+        },
+
+        {
+            name: "Dr. Michael Chang",
+            specialty: "Orthopedics",
+            qualification: "MS, Orthopedics",
+            experience: "9 Years Exp.",
+            rating: "4.7",
+            next: "Today, 4:15 PM",
+            availability: "Today",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCpv5I5ZMIdC_z61UUUyk8QaCM17JAOOeL_qzQlqa9ZQRgq4UhR6vJYa1FkbD7C7E5zHv-ecUsWKhtls6nvI-LiB5fmhZEw4ZkVc43XQ7y179tp6g5Ln_6Vh5PjiEHh7g0zlmbOuytnB7jJUE_0wjFTS86qSjrs8aeHqWt736tyiNBsLd1mR-zijXBvm_Bw2pb_H6J3eUxp5NfDIGhrRUvhFDNTXDnvDuBp7xfkeSU8cfGoYUCYeMptYsPd3REr7QcOvgFW5MZBkHI"
+        }
+
+    ];
+
+
+    /* ==========================================================
+                            ELEMENTS
+    ========================================================== */
+
+    const track =
+        document.getElementById("carousel-track");
+
+    const specialtyFilter =
+        document.getElementById("specialty-filter");
+
+    const availabilityFilter =
+        document.getElementById("availability-filter");
+
+    const doctorCount =
+        document.getElementById("doctor-count");
+
+    const noResults =
+        document.getElementById("no-results");
+
+    const previousButton =
+        document.getElementById("carousel-prev");
+
+    const nextButton =
+        document.getElementById("carousel-next");
+
+
+    let filteredDoctors = [...doctors];
+
+    let currentIndex = 0;
+
+    let autoplay = null;
+
+
+    /* ==========================================================
+                        CREATE CARD
+    ========================================================== */
+
+    function createDoctorCard(doctor) {
+
+        const card =
+            document.createElement("a");
+
+
+        card.href =
+            "Seperate-doctor.html";
+
+
+        card.className =
+            "doctor-card";
+
+
+        card.innerHTML = `
+
+            <!-- TOP -->
+
+            <div class="doctor-main">
+
+
+                <!-- IMAGE -->
+
+                <div class="doctor-image-wrapper">
+
+                    <img
+                        class="doctor-image"
+                        src="${doctor.image}"
+                        alt="${doctor.name}"
+                    >
+
+                </div>
+
+
+                <!-- INFORMATION -->
+
+                <div class="doctor-information">
+
+
+                    <!-- SPECIALTY + RATING -->
+
+                    <div class="doctor-top-row">
+
+
+                        <span class="doctor-specialty">
+
+                            ${doctor.specialty}
+
+                        </span>
+
+
+                        <div class="doctor-rating">
+
+                            <span
+                                class="material-symbols-outlined"
+                            >
+                                star
+                            </span>
+
+                            <span>
+                                ${doctor.rating}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <h3 class="doctor-name">
+
+                        ${doctor.name}
+
+                    </h3>
+
+
+                    <!-- QUALIFICATION -->
+
+                    <p class="doctor-qualification">
+
+                        ${doctor.qualification}
+                        •
+                        ${doctor.experience}
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- DIVIDER -->
+
+            <div class="doctor-divider"></div>
+
+
+            <!-- BOTTOM -->
+
+            <div class="doctor-bottom">
+
+
+                <!-- NEXT APPOINTMENT -->
+
+                <div class="doctor-next">
+
+                    <span class="material-symbols-outlined">
+
+                        event_available
+
+                    </span>
+
+                    <span>
+
+                        Next: ${doctor.next}
+
+                    </span>
+
+                </div>
+
+
+                <!-- PROFILE -->
+
+                <span class="doctor-profile">
+
+                    View Profile
+
+                    <span
+                        class="material-symbols-outlined"
+                    >
+                        chevron_right
+                    </span>
+
+                </span>
+
+
+            </div>
+
+        `;
+
+
+        return card;
+
+    }
+
+
+    /* ==========================================================
+                        RENDER CAROUSEL
+    ========================================================== */
+
+    function renderCarousel() {
+
+        track.innerHTML = "";
+
+        currentIndex = 0;
+
+
+        filteredDoctors.forEach(
+            doctor => {
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "carousel-item";
+
+
+                item.appendChild(
+                    createDoctorCard(doctor)
+                );
+
+
+                track.appendChild(item);
+
+            }
+        );
+
+
+        updateCarousel();
+
+    }
+
+
+    /* ==========================================================
+                        UPDATE CAROUSEL
+    ========================================================== */
+
+    function updateCarousel() {
+
+        const items =
+            Array.from(track.children);
+
+
+        if (!items.length) {
+
+            track.style.transform =
+                "translateX(0)";
+
+            return;
+
+        }
+
+
+        items.forEach(
+            (item, index) => {
+
+                item.classList.remove(
+                    "active",
+                    "prev-item",
+                    "next-item",
+                    "far-item"
+                );
+
+
+                if (
+                    index === currentIndex
+                ) {
+
+                    item.classList.add(
+                        "active"
+                    );
+
+                }
+
+                else if (
+                    index === currentIndex - 1
+                ) {
+
+                    item.classList.add(
+                        "prev-item"
+                    );
+
+                }
+
+                else if (
+                    index === currentIndex + 1
+                ) {
+
+                    item.classList.add(
+                        "next-item"
+                    );
+
+                }
+
+                else {
+
+                    item.classList.add(
+                        "far-item"
+                    );
+
+                }
+
+            }
+        );
+
+
+        const itemWidth =
+            items[0].getBoundingClientRect().width;
+
+
+        const containerWidth =
+            track.parentElement.getBoundingClientRect().width;
+
+
+        const offset =
+            (
+                containerWidth / 2
+            )
+            -
+            (
+                itemWidth / 2
+            )
+            -
+            (
+                currentIndex * itemWidth
+            );
+
+
+        track.style.transform =
+            `translateX(${offset}px)`;
+
+
+        /* Arrow state */
+
+        const disabled =
+            filteredDoctors.length <= 1;
+
+
+        previousButton.disabled =
+            disabled;
+
+        nextButton.disabled =
+            disabled;
+
+        previousButton.style.opacity =
+            disabled ? "0.35" : "1";
+
+        nextButton.style.opacity =
+            disabled ? "0.35" : "1";
+
+    }
+
+
+    /* ==========================================================
+                            NEXT
+    ========================================================== */
+
+    function nextSlide() {
+
+        if (
+            filteredDoctors.length <= 1
+        ) {
+
+            return;
+
+        }
+
+
+        currentIndex =
+            (
+                currentIndex + 1
+            )
+            %
+            filteredDoctors.length;
+
+
+        updateCarousel();
+
+    }
+
+
+    /* ==========================================================
+                        PREVIOUS
+    ========================================================== */
+
+    function previousSlide() {
+
+        if (
+            filteredDoctors.length <= 1
+        ) {
+
+            return;
+
+        }
+
+
+        currentIndex =
+            (
+                currentIndex -
+                1 +
+                filteredDoctors.length
+            )
+            %
+            filteredDoctors.length;
+
+
+        updateCarousel();
+
+    }
+
+
+    /* ==========================================================
+                            AUTOPLAY
+    ========================================================== */
+
+    function startAutoplay() {
+
+        stopAutoplay();
+
+
+        if (
+            filteredDoctors.length <= 1
+        ) {
+
+            return;
+
+        }
+
+
+        autoplay =
+            setInterval(
+                nextSlide,
+                4500
+            );
+
+    }
+
+
+    function stopAutoplay() {
+
+        if (autoplay) {
+
+            clearInterval(
+                autoplay
+            );
+
+            autoplay = null;
+
+        }
+
+    }
+
+
+    /* ==========================================================
+                            FILTER
+    ========================================================== */
+
+    function applyFilters() {
+
+        const specialty =
+            specialtyFilter.value;
+
+        const availability =
+            availabilityFilter.value;
+
+
+        filteredDoctors =
+            doctors.filter(
+                doctor => {
+
+                    const specialtyMatch =
+                        specialty === "all" ||
+                        doctor.specialty === specialty;
+
+
+                    const availabilityMatch =
+                        availability === "all" ||
+                        doctor.availability === availability;
+
+
+                    return (
+                        specialtyMatch &&
+                        availabilityMatch
+                    );
+
+                }
+            );
+
+
+        doctorCount.textContent =
+            `Showing ${filteredDoctors.length} Specialist${filteredDoctors.length === 1 ? "" : "s"}`;
+
+
+        if (
+            filteredDoctors.length === 0
+        ) {
+
+            track.innerHTML = "";
+
+            noResults.classList.remove(
+                "hidden"
+            );
+
+            stopAutoplay();
+
+            return;
+
+        }
+
+
+        noResults.classList.add(
+            "hidden"
+        );
+
+
+        renderCarousel();
+
+        startAutoplay();
+
+    }
+
+
+    /* ==========================================================
+                        BUTTON EVENTS
+    ========================================================== */
+
+    nextButton.addEventListener(
+        "click",
+        function() {
+
+            nextSlide();
+
+            startAutoplay();
+
+        }
+    );
+
+
+    previousButton.addEventListener(
+        "click",
+        function() {
+
+            previousSlide();
+
+            startAutoplay();
+
+        }
+    );
+
+
+    specialtyFilter.addEventListener(
+        "change",
+        applyFilters
+    );
+
+
+    availabilityFilter.addEventListener(
+        "change",
+        applyFilters
+    );
+
+
+    /* ==========================================================
+                        PAUSE ON HOVER
+    ========================================================== */
+
+    document
+        .getElementById("carousel-container")
+        .addEventListener(
+            "mouseenter",
+            stopAutoplay
+        );
+
+
+    document
+        .getElementById("carousel-container")
+        .addEventListener(
+            "mouseleave",
+            startAutoplay
+        );
+
+
+    /* ==========================================================
+                            RESIZE
+    ========================================================== */
+
+    window.addEventListener(
+        "resize",
+        function() {
+
+            updateCarousel();
+
+        }
+    );
+
+
+    /* ==========================================================
+                        INITIAL LOAD
+    ========================================================== */
+
+    applyFilters();
+
+</script>
+
+</body>
+
+</html>

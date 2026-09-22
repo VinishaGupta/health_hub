@@ -1,0 +1,363 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Health Hub — Caring For Every Life</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#0052cc",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#930014",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-tint": "#0c56d0",
+                        "surface-dim": "#cbdbf5",
+                        surface: "#f8f9ff",
+                        error: "#ba1a1a",
+                        "surface-bright": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-secondary-fixed": "#001f26",
+                        "secondary-fixed-dim": "#5dd6f3",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary-fixed": "#adecff",
+                        "secondary-container": "#6ae1ff",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        tertiary: "#8c0013",
+                        "on-primary-container": "#c4d2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#b51220",
+                        "on-tertiary-container": "#ffc5c0",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#410004",
+                        "on-secondary-container": "#006374",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        secondary: "#00687a",
+                        "on-background": "#0b1c30",
+                        "on-primary-fixed": "#001848",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c3c6d6",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "primary-fixed": "#dae2ff",
+                        background: "#f8f9ff",
+                        outline: "#737685",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed-variant": "#004e5d",
+                        primary: "#003d9b",
+                        "on-surface": "#0b1c30",
+                        "inverse-surface": "#213145",
+                        "surface-container-highest": "#d3e4fe",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        base: "8px",
+                        gutter: "24px",
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": [
+                            "24px",
+                            { lineHeight: "32px", fontWeight: "600" },
+                        ],
+                        "headline-md": [
+                            "24px",
+                            { lineHeight: "32px", fontWeight: "600" },
+                        ],
+                        "display-lg": [
+                            "48px",
+                            {
+                                lineHeight: "56px",
+                                letterSpacing: "-0.02em",
+                                fontWeight: "700",
+                            },
+                        ],
+                        "label-md": [
+                            "14px",
+                            {
+                                lineHeight: "20px",
+                                letterSpacing: "0.01em",
+                                fontWeight: "500",
+                            },
+                        ],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "600" }],
+                        "headline-lg": [
+                            "32px",
+                            {
+                                lineHeight: "40px",
+                                letterSpacing: "-0.01em",
+                                fontWeight: "600",
+                            },
+                        ],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .glass-header {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                "FILL" 0,
+                "wght" 400,
+                "GRAD" 0,
+                "opsz" 24;
+        }
+
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c0 16.569-13.431 30-30 30 16.569 0 30 13.431 30 30 0-16.569 13.431-30 30-30-16.569 0-30-13.431-30-30z' fill='%2300687a' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .shadow-medical {
+            box-shadow:
+                0 4px 6px -1px rgba(0, 82, 204, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        @keyframes pulse-red {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(181, 18, 32, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(181, 18, 32, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(181, 18, 32, 0);
+            }
+        }
+
+        .emergency-pulse {
+            animation: pulse-red 2s infinite;
+        }
+
+        .hospital-identity {
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid rgba(195, 198, 214, 0.45);
+        }
+
+        .hospital-logo-mark {
+            width: 104px;
+            height: 104px;
+            border: 4px solid #08a8cf;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #003d9b;
+            font-weight: 800;
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 61, 155, 0.1);
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <nav
+        class="relative flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full max-w-container-max mx-auto">
+        <a href="index.html"
+            class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2">
+            <span class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 1">medical_services</span>
+            <span>Health Hub</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            <a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary transition-colors duration-200 py-1"
+                href="index.html">Home</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200"
+                href="Search-A-Doctor.html">Find A Doctor</a>
+            <!-- <am
+            class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200"
+            href="Services.html"
+            >Services</am
+          > -->
+        </div>
+
+        <!-- My Health Button -->
+        <a href="my-health.html"
+            class="ml-auto border-2 border-[#159F00] text-[#159F00] px-8 py-3 rounded-xl font-bold hover:bg-[#107800] hover:text-white transition-all duration-300">
+            Health Insights
+        </a>
+
+    </nav>
+
+        <iframe
+    src="hospital-header.html"
+    class="w-full h-[130px] border-0"
+    scrolling="no">
+</iframe> 
+    <div class="max-w-container-max mx-auto px-margin-desktop p-[60px]">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-headline-lg font-headline-lg text-primary mb-4">
+                Comprehensive Facilities
+            </h2>
+            <p class="text-body-md text-on-surface-variant">
+                Our state-of-the-art facilities and expert medical teams ensure
+                you receive the best possible care across all departments.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            <!-- Service Cards -->
+            <a class="group block bg-surface-container-lowest p-6 rounded-3xl shadow-medical border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-2"
+                href="Doctors-and-Appointments.html">
+                <div class="aspect-video mb-6 rounded-2xl overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A clean, flat vector illustration showing a friendly male doctor in a white lab coat sitting at a modern desk, consulting with a female patient. The setting is bright and professional with a medical monitor in the background. The style is minimalist with soft teal and blue tones, reflecting a high-end medical SaaS aesthetic."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9c8RxGt1hXFE0W96dDtFSb2DkX3iz9xZDH6ERTDWckypf5B0HLkWlj69A49qANsBhAR652TK7cR7BJBmojkhlFSHi9Y-KHfdXQapZXrnK_I3SdXmmUcKfE79QOGxGHEOrfM5HfUVzIu2G245OrlA9YKjPd3279txLmtsEfHZPeItbvoP14PYbeiEpu_ISIoqcJS9JJAssMTcaSVVPaUu6j_A0KLKybzZN2QyBQSDqLQQYBkEGfYlPt4Odp7H1YkyfjIqD-SBh1RI" />
+                </div>
+                <h3 class="text-headline-md font-headline-md text-primary mb-2">
+                    1. OPD
+                </h3>
+                <p class="text-body-md text-on-surface-variant mb-4">
+                    Personalized outpatient consultations with our top-tier
+                    specialists for routine and complex health needs.
+                </p>
+                <span class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all">Learn More
+                    <span class="material-symbols-outlined ml-1">arrow_forward</span></span>
+            </a>
+            <div
+                class="group bg-surface-container-lowest p-6 rounded-3xl shadow-medical border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="aspect-video mb-6 rounded-2xl overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A detailed vector illustration of a modern Intensive Care Unit (ICU) setup. It features high-tech patient monitors displaying heart rate and vitals, IV drip stands with fluid bags, and advanced medical equipment. The visual uses a calming palette of light blue and sage green, emphasizing clinical precision and reliability."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxfzBXizOn3weGDiJmi6VZhZW7ZhWzeOZzceYL-SCFvrab9era7apT2PNNTZXINKH-L8PqIQfVCK1OUVrorkUhrWryeS89fAZbb1UcZX3oCI4iqy5cw3A3aXNL0Js6_Qh83lKoaQUF8h7Ibmq-C_0VXnGw8Kjh2s8o5o_j3z-EBjwUAh5S_KzwNljdLkqcw5BVY6Mlbs6dBtByPvlSsum68viEC-XSvXBze3iGsRNDIIQP1YCL_e3Bih1lD4mD9PtZEGa5zgLSlzA" />
+                </div>
+                <h3 class="text-headline-md font-headline-md text-primary mb-2">
+                    2. ICU
+                </h3>
+                <p class="text-body-md text-on-surface-variant mb-4">
+                    Equipped with the latest life-support technology and 24/7
+                    specialist monitoring for critical care patients.
+                </p>
+                <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">Learn
+                    More
+                    <span class="material-symbols-outlined ml-1">arrow_forward</span></a>
+            </div>
+            <div
+                class="group bg-surface-container-lowest p-6 rounded-3xl shadow-medical border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="aspect-video mb-6 rounded-2xl overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A sleek vector illustration of a modern white ambulance with a medical cross and emergency lights. Next to it is a mobile medical stretcher. The background is a clean mint green wash. The illustration style is professional and clean, conveying rapid response and high-quality emergency services."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcpQFGNXWbVTk5RhRXP7UqA13st86Jp4N1EsENMKPPQa8z_4sQEaDQPe6xrkQmwHi3bovavEd8IwlXTU8UNArGZhSufJwxjpQV0DcF8PAHn1gcnf9CB4PbCe_2P5N15PJx1tyQLe2s2pdRmNbH80_bVuC5ThgBhf6CKeiAtSSr1ufwLdviZSmplWMojAlxtmw93s0NrPDl-89bWzDmSLG92H3_CaseLFEu5q0nmE4Uitzc9A47vKD11jiB3X0Za7UX169a6RVpqVo" />
+                </div>
+                <h3 class="text-headline-md font-headline-md text-primary mb-2">
+                    3. Ambulance
+                </h3>
+                <p class="text-body-md text-on-surface-variant mb-4">
+                    Rapid response emergency vehicles staffed with trained
+                    paramedics for advanced pre-hospital life support.
+                </p>
+                <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">Learn
+                    More
+                    <span class="material-symbols-outlined ml-1">arrow_forward</span></a>
+            </div>
+            <div
+                class="group bg-surface-container-lowest p-6 rounded-3xl shadow-medical border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="aspect-video mb-6 rounded-2xl overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover"
+                        data-alt="An illustration of a modern, organized hospital pharmacy. Shelves are neatly stocked with various medicine bottles and boxes. There is a clean countertop with a mortar and pestle. The design uses a fresh palette of whites, blues, and teals, suggesting a sterile and efficient pharmaceutical environment."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXCihp5ntgJhQbKJFlU-yuiPRju91cSW7Si7tln2QifSWDMw2aNizWbhr2WBp8GN7o5DF2sHxp9esnypWF188jcdCoeOu8TzJRle8LV4IoRM-DWDh3NTSnsnfUXxUOcYX9rdKIQzy-nb1qX1iu8QMTM1ac6olfNinBi_LMx5ZB_qJrf3pfaU25iiAVaKzeUp8WNduc9AQOx3sdkR6QiVZqjPWnIB1S3cvdoUnGlM66AjM81GHyDzA6lgg9HrLcqNM8O6SkrUG25JE" />
+                </div>
+                <h3 class="text-headline-md font-headline-md text-primary mb-2">
+                    4. Pharmacy
+                </h3>
+                <p class="text-body-md text-on-surface-variant mb-4">
+                    Fully-stocked in-house pharmacy providing authentic medications
+                    and expert guidance on prescriptions.
+                </p>
+                <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">Learn
+                    More
+                    <span class="material-symbols-outlined ml-1">arrow_forward</span></a>
+            </div>
+            <div
+                class="group bg-surface-container-lowest p-6 rounded-3xl shadow-medical border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="aspect-video mb-6 rounded-2xl overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A professional medical lab illustration featuring a modern microscope, test tubes with colored liquids in a rack, and beakers. A medical technician in the background is focused on results. The style is clean and informative, using medical blues and greens to represent scientific accuracy and trust."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ZqIP7lbkv6eOzabz2M6feDt1IJNrESH4MDa5-nP66Wc2aqfDCh8_B2z73jQIFSPTtLwQYA90D4v1ZR7PpbtNm2AFFAxH1fdV6ZtEDZHgeDKvrWfIPyRsytLE4TdSdrbnVmS7Dz-_SKwf8iCO-uog-DToC9P3UgEEWslfFQ0sK1f9qKg0MdFhCjd4OhrzWOq1SQUBbUIagcfQ4bLtCbSiDTxeM7jx9HrYvhiaMu5c2h6g8l-ckmge2NuPL8q8hFnDkBVmfs3aGF8" />
+                </div>
+                <h3 class="text-headline-md font-headline-md text-primary mb-2">
+                    5. Lab
+                </h3>
+                <p class="text-body-md text-on-surface-variant mb-4">
+                    Advanced diagnostic laboratory offering high-precision testing
+                    and rapid turnaround for accurate diagnoses.
+                </p>
+                <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">Learn
+                    More
+                    <span class="material-symbols-outlined ml-1">arrow_forward</span></a>
+            </div>
+            <div
+                class="group bg-surface-container-lowest p-6 rounded-3xl shadow-medical border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="aspect-video mb-6 rounded-2xl overflow-hidden bg-surface-container">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A vector illustration of a dedicated emergency medical team. Three doctors and nurses in scrubs are shown rushing a patient on a rolling hospital bed. The dynamic composition and clean art style convey urgency, professionalism, and teamwork in a critical healthcare setting."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk6Hag5YPSfObq8dxZlXER8R2HUe_5mrHjtxBPb034rpBRD4y9ZUOdwcQgDccAez1v-2NjpuC-PiUt4y2CoIt4Pb5JDzZC7q405Ao2JRaFbu_omfbNZtJAqmoVxg95ie-3YQaBHndkk5iWE9CXQ5it1s4Sb6XJuWwhohiO2EFgVqUvC43P-qQTEy1eHqMrLvskEgwHDXbaa10WzABtAy-ZYGGx9arQU2xJOmisvSGfd0DKeqrc8jujqI7ISbR2JPgxEk5kYmm3rsg" />
+                </div>
+                <h3 class="text-headline-md font-headline-md text-primary mb-2">
+                    6. Emergency
+                </h3>
+                <p class="text-body-md text-on-surface-variant mb-4">
+                    High-priority emergency department ready to handle trauma and
+                    acute medical conditions at any hour.
+                </p>
+                <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">Learn
+                    More
+                    <span class="material-symbols-outlined ml-1">arrow_forward</span></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
