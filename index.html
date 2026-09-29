@@ -446,23 +446,398 @@
                 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
+
+        /* ==========================================================
+   DASHBOARD BUTTON
+========================================================== */
+
+.dashboard-bar {
+    width: 100%;
+    background: #ffffff;
+    padding: 12px 40px 0;
+}
+
+.dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: #003d9b;
+    color: #ffffff;
+
+    padding: 9px 18px;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow: 0 4px 10px rgba(0, 61, 155, 0.15);
+
+    transition: all 0.25s ease;
+}
+
+.dashboard-btn:hover {
+    background: #0052cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 61, 155, 0.25);
+}
+
+.dashboard-arrow {
+    font-size: 21px;
+    line-height: 1;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .dashboard-bar {
+        padding: 12px 16px 4px;
+    }
+
+    .dashboard-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+}
+
+/* ==========================================================
+   DASHBOARD BUTTON
+========================================================== */
+
+.dashboard-bar {
+    width: 100%;
+    background: #ffffff;
+    padding: 12px 40px 0;
+}
+
+.dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: #003d9b;
+    color: #ffffff;
+
+    padding: 9px 18px;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow: 0 4px 10px rgba(0, 61, 155, 0.15);
+
+    transition: all 0.25s ease;
+}
+
+.dashboard-btn:hover {
+    background: #0052cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 61, 155, 0.25);
+}
+
+.dashboard-arrow {
+    font-size: 21px;
+    line-height: 1;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .dashboard-bar {
+        padding: 12px 16px 4px;
+    }
+
+    .dashboard-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+}
+
+        /* ==========================================================
+           USER INFORMATION / INSTRUCTION WINDOW
+        ========================================================== */
+
+        .info-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.10);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+
+        .info-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .info-window {
+            position: relative;
+            width: min(950px, 95vw);
+            min-height: 370px;
+            background: rgba(218, 242, 251, 0.97);
+            border: 4px solid #159fd0;
+            border-radius: 18px;
+            box-shadow: 0 15px 45px rgba(0, 61, 155, 0.18);
+            padding: 42px 55px 105px;
+            color: #006878;
+        }
+
+        .info-date {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #007fa8;
+        }
+
+        .info-title {
+            text-align: center;
+            font-size: 27px;
+            font-weight: 800;
+            color: #087fa9;
+            text-decoration: underline;
+            margin-bottom: 25px;
+        }
+.info-list {
+    margin: 0;
+    padding-left: 32px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #087fa9;
+
+    line-height: 1.8;
+
+    list-style-type: disc;
+}
+
+.info-list li {
+    margin-bottom: 3px;
+    padding-left: 5px;
+}
+
+        .info-bottom {
+            position: absolute;
+            left: 55px;
+            right: 35px;
+            bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .info-promise {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1684ad;
+            max-width: 620px;
+        }
+
+        .info-continue {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 3px solid #159fd0;
+            border-radius: 8px;
+            color: #159fd0;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+
+        .info-continue:hover {
+            background: #159fd0;
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .info-continue-arrow {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .info-overlay {
+                padding: 15px;
+            }
+
+            .info-window {
+                width: 100%;
+                min-height: 430px;
+                padding: 45px 25px 105px;
+                border-width: 3px;
+            }
+
+            .info-date {
+                top: 12px;
+                right: 18px;
+                font-size: 10px;
+            }
+
+            .info-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .info-list {
+                font-size: 15px;
+                padding-left: 22px;
+                line-height: 1.65;
+            }
+
+            .info-bottom {
+                left: 25px;
+                right: 25px;
+                bottom: 20px;
+                align-items: flex-end;
+            }
+
+            .info-promise {
+                font-size: 9px;
+                max-width: 63%;
+            }
+
+            .info-continue {
+                padding: 6px 8px;
+                font-size: 9px;
+            }
+
+            .info-continue-arrow {
+                font-size: 18px;
+            }
+        }
+
     </style>
 
 </head>
 
 
+
 <body class="bg-background text-on-background font-body-md overflow-x-hidden leaf-pattern">
+
+    <!-- ==========================================================
+         USER INFORMATION / INSTRUCTION WINDOW
+    =========================================================== -->
+
+    <div id="userInfoOverlay"
+         class="info-overlay"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="userInfoTitle">
+
+        <div class="info-window">
+
+            <div class="info-date">
+                Last update Date: 18.09.2026
+            </div>
+
+            <div id="userInfoTitle" class="info-title">
+                *Informations &amp; Instructions to user.*
+            </div>
+
+            <ol class="info-list">
+                <li>This is a healthcare discovery platform.</li>
+                <li>Search hospitals and doctors according to your location.</li>
+                <li>Check available medical services before visiting.</li>
+                <li>Hospital information may change from time to time.</li>
+                <li>In an emergency, contact the appropriate emergency service.</li>
+            </ol>
+
+            <div class="info-bottom">
+
+                <div class="info-promise">
+                    I read and understand all above Informations &amp; Instructions.
+                    I promised.....
+                </div>
+
+                <button type="button"
+                        class="info-continue"
+                        id="infoContinueBtn"
+                        aria-label="Accept information and continue">
+
+                    <span>
+                        Promised &amp;<br>
+                        continued
+                    </span>
+
+                    <span class="info-continue-arrow">➜</span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================================================
+         END USER INFORMATION / INSTRUCTION WINDOW
+    =========================================================== -->
+
+
 
 
     <!-- =========================================
          TOP NAVIGATION
     ========================================= -->
 
-    <header
-        class="bg-white/70 dark:bg-on-background/70 backdrop-blur-md shadow-sm docked full-width top-0 sticky z-50">
+    <!-- =========================================
+     DASHBOARD BUTTON
+========================================= -->
 
-        <nav
-            class="relative flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full">
+<div class="dashboard-bar">
+
+    <a
+        href="../dashboard.php"
+        class="dashboard-btn">
+
+        <span class="dashboard-arrow">←</span>
+
+        <span>Dashboard</span>
+
+    </a>
+
+</div>
+
+
+<!-- =========================================
+     TOP NAVIGATION
+========================================= -->
+
+<header
+    class="bg-white/70 dark:bg-on-background/70 backdrop-blur-md shadow-sm docked full-width sticky z-50">
+
+    <nav
+        class="relative flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full">
 
             <a
                 href="index.html"
@@ -685,7 +1060,7 @@
 
                     <!-- CARDS -->
 
-                    <a href="home.php">
+                    <a href="home.html">
 
                         <div
                             id="hospitalSlider"
@@ -1637,6 +2012,34 @@
             }
         );
 
+    </script>
+
+
+    <!-- ==========================================================
+         USER INFORMATION WINDOW JAVASCRIPT
+    =========================================================== -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const infoOverlay = document.getElementById("userInfoOverlay");
+            const infoContinueBtn = document.getElementById("infoContinueBtn");
+
+            if (!infoOverlay || !infoContinueBtn) {
+                return;
+            }
+
+            infoContinueBtn.addEventListener("click", function () {
+
+                infoOverlay.classList.add("hidden");
+
+                setTimeout(function () {
+                    infoOverlay.remove();
+                }, 300);
+
+            });
+
+        });
     </script>
 
 

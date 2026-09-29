@@ -429,7 +429,7 @@ $adviceRegional = [
 
                 <?= htmlspecialchars($regionalLanguageName) ?>
 
-                Advice
+                सल्ला
 
             </h2>
 

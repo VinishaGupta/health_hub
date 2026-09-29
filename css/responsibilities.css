@@ -1,0 +1,218 @@
+/* ==========================================================
+        HOSPITAL RESPONSIBILITIES PAGE
+========================================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f8f9ff;
+    margin: 0;
+}
+
+
+/* ==========================================================
+        RESPONSIBILITIES CONTENT
+========================================================== */
+
+.responsibilities-content {
+    display: none;
+    animation: slideIn 0.4s ease;
+}
+
+.responsibilities-content.active {
+    display: block;
+}
+
+
+@keyframes slideIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* ==========================================================
+        ACTIVE LANGUAGE TAB
+========================================================== */
+
+.active-tab {
+    background: #0ea5e9 !important;
+    color: white !important;
+}
+
+
+/* ==========================================================
+        RESPONSIBILITIES DATA
+========================================================== */
+
+.responsibilities-data h1 {
+
+    font-size: 2rem;
+    font-weight: 700;
+
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+
+    color: #0369a1;
+
+}
+
+
+.responsibilities-data h2 {
+
+    font-size: 1.75rem;
+    font-weight: 700;
+
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+
+    color: #0369a1;
+
+}
+
+
+.responsibilities-data h3 {
+
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+
+    color: #0ea5e9;
+
+}
+
+
+/* ==========================================================
+        RESPONSIBILITY LIST
+========================================================== */
+
+.responsibilities-data ul {
+
+    list-style-type: disc;
+
+    padding-left: 2rem;
+
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+}
+
+
+.responsibilities-data ol {
+
+    list-style-type: decimal;
+
+    padding-left: 2rem;
+
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+}
+
+
+.responsibilities-data li {
+
+    margin-bottom: 1rem;
+
+    line-height: 1.7;
+
+}
+
+
+.responsibilities-data p {
+
+    margin-bottom: 1rem;
+
+    line-height: 1.7;
+
+}
+
+
+/* ==========================================================
+        RESPONSIBILITY SECTIONS
+========================================================== */
+
+.responsibility-section {
+
+    margin-bottom: 32px;
+
+}
+
+
+.responsibility-section h3 {
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    color: #0369a1;
+
+    margin-bottom: 16px;
+
+}
+
+
+/* ==========================================================
+        INNER PAGE HEADINGS
+========================================================== */
+
+.responsibility-title {
+
+    text-decoration-line: underline !important;
+
+    text-decoration-style: solid !important;
+
+    text-decoration-thickness: 2px !important;
+
+    text-underline-offset: 6px !important;
+
+}
+
+
+/* ==========================================================
+        RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .responsibilities-data h3 {
+        font-size: 20px;
+    }
+
+    .responsibilities-data li {
+        font-size: 16px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .responsibility-title {
+        font-size: 1.5rem !important;
+    }
+
+    .responsibilities-data {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .responsibility-section h3 {
+        font-size: 19px;
+    }
+
+}

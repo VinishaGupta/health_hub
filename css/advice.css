@@ -224,3 +224,31 @@ body {
     }
 
 }
+
+/* ==================================================
+   ADVICE PAGE HEADINGS
+================================================== */
+
+.english-title,
+.hindi-title,
+.regional-title {
+
+    text-decoration: underline;
+
+    text-underline-offset: 6px;
+
+}
+
+
+/* ==================================================
+   ADVICE PAGE INNER HEADINGS
+================================================== */
+
+.english-title,
+.hindi-title,
+.regional-title {
+    text-decoration-line: underline !important;
+    text-decoration-style: solid !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 6px !important;
+}

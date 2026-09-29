@@ -153,4 +153,14 @@ body {
 
         }
 
-    
+
+/* ==================================================
+   INSTRUCTION PAGE INNER HEADINGS
+================================================== */
+
+.instruction-title {
+    text-decoration-line: underline !important;
+    text-decoration-style: solid !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 6px !important;
+}

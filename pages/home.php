@@ -230,7 +230,7 @@ $hospital = [
     <div class="dashboard-wrapper max-w-container-max mx-0 ml-6 pt-4">
 
         <a
-            href="../dashboard.php"
+             href="../../dashboard.php"
             class="dashboard-btn"
         >
             <span class="dashboard-arrow">←</span>
@@ -455,80 +455,96 @@ $hospital = [
 
 
                   <!-- Services Section -->
-                  <section class="py-24 bg-surface-container-low">
+<section class="py-24 bg-surface-container-low">
 
+  <div class="max-w-7xl mx-0 px-4">
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5
+                justify-items-center items-center
+                gap-6">
 
+      <!-- Department -->
+      <a href="./departments.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Department
+      </a>
 
-                    <div class="max-w-7xl mx-0 px-4">
+      <!-- Available Facilities -->
+      <a href="./facilities.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Available Features
+      </a>
 
-                      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5
-                    justify-items-center items-center
-                    gap-6">
+      <!-- Services -->
+      <a href="./services.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Services
+      </a>
 
-                        <!-- Department -->
-                        <a href="./departments.php" class="w-56 h-14 flex items-center justify-center text-center
-                      border-2 border-sky-500 rounded-xl
-                      bg-white text-sky-500
-                      text-lg font-bold
-                      hover:bg-sky-500 hover:text-white
-                      transition duration-300">
+      <!-- Instructions -->
+      <a href="./instructions.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Instructions
+      </a>
 
-                          Department
+      <!-- Advice -->
+      <a href="./advice.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Advice
+      </a>
 
-                        </a>
+      <!-- Responsibilities -->
+      <a href="./responsibilities.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Responsibilities
+      </a>
 
-                        <!-- Available Facilities -->
-                        <a href="./facilities.php" class="w-56 h-14 flex items-center justify-center text-center
-                      border-2 border-sky-500 rounded-xl
-                      bg-white text-sky-500
-                      text-lg font-bold
-                      hover:bg-sky-500 hover:text-white
-                      transition duration-300">
+      <!-- Rights -->
+      <a href="./rights.php"
+         class="w-56 h-14 flex items-center justify-center text-center
+                border-2 border-sky-500 rounded-xl
+                bg-white text-sky-500
+                text-lg font-bold
+                hover:bg-sky-500 hover:text-white
+                transition duration-300">
+        Rights
+      </a>
 
-                          Available Features
+    </div>
 
-                        </a>
+  </div>
 
-                        <!-- Services -->
-                        <a href="./services.php" class="w-56 h-14 flex items-center justify-center text-center
-                      border-2 border-sky-500 rounded-xl
-                      bg-white text-sky-500
-                      text-lg font-bold
-                      hover:bg-sky-500 hover:text-white
-                      transition duration-300">
-
-                          Services
-
-                        </a>
-
-                        <!-- Instructions -->
-                        <a href="./instructions.php" class="w-56 h-14 flex items-center justify-center text-center
-                      border-2 border-sky-500 rounded-xl
-                      bg-white text-sky-500
-                      text-lg font-bold
-                      hover:bg-sky-500 hover:text-white
-                      transition duration-300">
-
-                          Instructions
-
-                        </a>
-
-                        <!-- Advice -->
-                        <a href="./advice.php" class="w-56 h-14 flex items-center justify-center text-center
-                      border-2 border-sky-500 rounded-xl
-                      bg-white text-sky-500
-                      text-lg font-bold
-                      hover:bg-sky-500 hover:text-white
-                      transition duration-300">
-
-                          Advice
-
-                        </a>
-
-                      </div>
-
-                    </div>
+</section>
 
                   </section>
                   <!-- Why Choose Health Hub Section -->

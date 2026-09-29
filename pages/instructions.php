@@ -134,7 +134,7 @@ $instructionRegional = '
 
     <link
         rel="stylesheet"
-        href="../css/instructions.css"
+        href="../css/instructions.css?v=1"
     >
 
 
