@@ -23,31 +23,31 @@ const bookingTime = document.getElementById("bookingTime");
 const bookingStatus = document.getElementById("bookingStatus");
 
 /* ==========================================================
-                    SHIFTS DATA (FALLBACK)
+                    FALLBACK SHIFTS DATA
 ========================================================== */
 
 const defaultShiftsData = [
     {
         id: 1,
-        booking_time: "10:00 – 13:00",
+        booking_time: "10.00 – 13.00",
         status: "Booking Open",
         status_type: "open"
     },
     {
         id: 2,
-        booking_time: "10:00 – 13:30 – On dates 23/07/2026, 24/07/2026...",
+        booking_time: "10:00 – 13:30",
         status: "Booking Closed",
         status_type: "closed"
     },
     {
         id: 3,
-        booking_time: "24 Hours – All day",
+        booking_time: "10:00 – 13:30",
         status: "Booking Full",
         status_type: "full"
     },
     {
         id: 4,
-        booking_time: "10:00 – 13:30 – All day",
+        booking_time: "10:00 – 13:30",
         status: "Booking Open",
         status_type: "open"
     }
@@ -140,42 +140,19 @@ if (appointmentDateInput) {
 setSelectedDate(selectedDate);
 
 /* ==========================================================
-                    SHIFT DROPDOWN & ACCORDION
+            SHIFT SELECTION (OPENS TABLE DIRECTLY)
 ========================================================== */
 
 function handleShiftSelect(shiftId) {
+    // Hide all other shift blocks
     document.querySelectorAll(".shift-wrapper").forEach(function (wrapper) {
         wrapper.classList.add("hidden");
     });
 
+    // Directly display the chosen shift container
     const targetContainer = document.getElementById("shift-container-" + shiftId);
     if (targetContainer) {
         targetContainer.classList.remove("hidden");
-
-        const targetDetails = document.getElementById("shift" + shiftId);
-        const targetIcon = document.getElementById("icon-shift" + shiftId);
-
-        if (targetDetails) {
-            targetDetails.classList.remove("hidden");
-        }
-        if (targetIcon) {
-            targetIcon.innerText = "expand_less";
-        }
-    }
-}
-
-function toggleShift(id) {
-    const section = document.getElementById(id);
-    const icon = document.getElementById("icon-" + id);
-
-    if (!section || !icon) return;
-
-    section.classList.toggle("hidden");
-
-    if (section.classList.contains("hidden")) {
-        icon.innerText = "expand_more";
-    } else {
-        icon.innerText = "expand_less";
     }
 }
 

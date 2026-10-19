@@ -30,7 +30,7 @@ $shifts = [
     [
         "id" => 1,
         "name" => "OPD - Shift 01",
-        "type" => "Routine",
+        "type" => "Anybody",
         "opd_time" => "13.00 - 15.00",
         "booking_time" => "10.00 – 13.00",
         "status" => "Booking Open",
@@ -77,62 +77,32 @@ $slots = [
     [
         "time" => "13:00",
         "status" => "Available",
-        "status_type" => "available",
-        "types" => [
-            "",
-            "Anybody",
-            "Self",
-            "Other",
-            "Test Report",
-            "Informal Consultant",
-            "MR"
-        ]
+        "status_type" => "available"
     ],
     [
         "time" => "13:10",
         "status" => "Checked",
-        "status_type" => "checked",
-        "types" => [
-            ""
-        ]
+        "status_type" => "checked"
     ],
     [
-        "time" => "13.20",
+        "time" => "13:20",
         "status" => "Absent",
-        "status_type" => "absent",
-        "types" => [
-            "",
-            "Self",
-            "Other"
-        ]
+        "status_type" => "absent"
     ],
     [
-        "time" => "13.30",
+        "time" => "13:30",
         "status" => "Booked",
-        "status_type" => "booked",
-        "types" => [
-            ""
-        ]
+        "status_type" => "booked"
     ],
     [
-        "time" => "13.40",
+        "time" => "13:40",
         "status" => "Available",
-        "status_type" => "available",
-        "types" => [
-            "",
-            "Self",
-            "Other"
-        ]
+        "status_type" => "available"
     ],
     [
         "time" => "13:50",
         "status" => "Available",
-        "status_type" => "available",
-        "types" => [
-            "",
-            "Self",
-            "Other"
-        ]
+        "status_type" => "available"
     ]
 ];
 
@@ -149,7 +119,7 @@ $slots = [
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
     <!-- Tailwind Config -->
@@ -241,9 +211,7 @@ $slots = [
 
 <body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col">
 
-<!-- ==========================================================
-                            NAVBAR
-========================================================== -->
+<!-- NAVBAR -->
 <nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-sm">
     <div class="opd-nav-inner relative flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
         <div class="flex items-center gap-8">
@@ -266,9 +234,7 @@ $slots = [
     </div>
 </nav>
 
-<!-- ==========================================================
-                            MAIN
-========================================================== -->
+<!-- MAIN -->
 <main class="opd-main mt-24 px-margin-desktop max-w-container-max mx-auto w-full pb-12 flex flex-col gap-8">
 
     <!-- PAGE HEADER -->
@@ -333,28 +299,28 @@ $slots = [
         </div>
     </section>
 
-    <!-- DROPDOWN SHIFT SELECTOR -->
-    <section class="flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm">
-        <label for="shiftFilterDropdown" class="font-bold text-primary flex items-center gap-2 text-base">
+    <!-- SHIFT DROPDOWN SELECTOR (FORMAT MATCHED) -->
+    <section class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm">
+        <label for="shiftFilterDropdown" class="font-bold text-primary flex items-center gap-2 text-base shrink-0">
             <span class="material-symbols-outlined text-[22px]">schedule</span>
-            Select OPD Shift:
+            Select Shift:
         </label>
-        <div class="relative w-full sm:w-80">
+        <div class="relative w-full sm:max-w-xl">
             <select
                 id="shiftFilterDropdown"
                 onchange="handleShiftSelect(this.value)"
-                class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl text-on-surface font-semibold focus:outline-none focus:ring-2 focus:ring-primary shadow-sm cursor-pointer"
+                class="w-full px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl text-on-surface font-semibold text-[15px] focus:outline-none focus:ring-2 focus:ring-primary shadow-sm cursor-pointer"
             >
                 <?php foreach ($shifts as $idx => $s): ?>
                     <option value="<?= $s["id"] ?>" <?= $idx === 0 ? 'selected' : '' ?>>
-                        Shift <?= $s["id"] ?> - <?= htmlspecialchars($s["name"]) ?> (<?= htmlspecialchars($s["type"]) ?>)
+                        Shift <?= $s["id"] ?> - Type <?= htmlspecialchars($s["type"]) ?> - Time: <?= htmlspecialchars($s["opd_time"]) ?>
                     </option>
                 <?php endforeach; ?>
             </select>
         </div>
     </section>
 
-    <!-- CONTENT -->
+    <!-- CONTENT: DIRECT TABLE RENDERING (NO ACCORDION BUTTON) -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <div class="lg:col-span-12 flex flex-col gap-4">
 
@@ -364,64 +330,28 @@ $slots = [
                 <!-- CONTAINER WRAPPER FOR EACH SHIFT -->
                 <div id="shift-container-<?= $shift["id"] ?>" class="shift-wrapper flex flex-col <?= $isInitialVisible ? '' : 'hidden' ?>">
 
-                    <!-- "VIEW DETAILS" LINK POSITIONED ABOVE THE SHIFT -->
-                    <div class="flex justify-end pr-2 mb-1.5">
+                    <!-- "VIEW DETAILS" HIGHLIGHTED ON THE LHS -->
+                    <div class="flex justify-start pl-1 mb-3">
                         <button
                             onclick="openBookingDetails(<?= $shift['id'] ?>)"
-                            class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 hover:underline transition inline-flex items-center gap-1 cursor-pointer"
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-[17px] underline decoration-2 underline-offset-4 rounded-lg shadow-sm hover:shadow transition-all cursor-pointer"
                             type="button"
                         >
+                            
                             View Details
                         </button>
                     </div>
 
-                    <!-- FULL WIDTH SHIFT ACCORDION ROW -->
-                    <div class="shift-row flex flex-col gap-4 mb-5">
-                        <button
-                            onclick="toggleShift('shift<?= $shift["id"] ?>')"
-                            class="shift-button w-full border-2 border-violet-500 rounded-xl bg-white hover:bg-violet-50 transition px-4 sm:px-6 py-5 cursor-pointer"
-                            type="button"
-                        >
-                            <div class="shift-summary grid grid-cols-[180px_1fr_300px_40px] items-center">
-                                <div class="whitespace-nowrap">
-                                    <span class="text-[20px] font-bold text-blue-700">
-                                        <?= htmlspecialchars($shift["name"]) ?>
-                                    </span>
-                                </div>
-
-                                <div class="whitespace-nowrap text-center">
-                                    <span class="text-[20px] font-bold text-emerald-700">
-                                        <?= htmlspecialchars($shift["type"]) ?>
-                                    </span>
-                                </div>
-
-                                <div class="whitespace-nowrap text-center">
-                                    <span class="text-[20px] font-bold text-orange-600">
-                                        OPD Time: <?= htmlspecialchars($shift["opd_time"]) ?>
-                                    </span>
-                                </div>
-
-                                <span
-                                    id="icon-shift<?= $shift["id"] ?>"
-                                    class="material-symbols-outlined text-3xl text-purple-600 transition-transform duration-200"
-                                >
-                                    <?= $isInitialVisible ? 'expand_less' : 'expand_more' ?>
-                                </span>
-                            </div>
-                        </button>
-                    </div>
-
-                    <!-- SHIFT CONTENT -->
-                    <div id="shift<?= $shift["id"] ?>" class="<?= $isInitialVisible ? '' : 'hidden' ?> mb-8">
+                    <!-- DIRECT SLOT TABLE -->
+                    <div id="shift<?= $shift["id"] ?>" class="mb-8">
                         <?php if ($shift["id"] === 1): ?>
                             <div class="w-full overflow-x-auto bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant">
-                                <table class="slot-table w-full min-w-[600px] text-left border-collapse">
+                                <table class="slot-table w-full min-w-[500px] text-left border-collapse">
                                     <thead>
                                         <tr class="bg-surface-container border-b border-outline-variant">
                                             <th class="px-6 py-4 font-label-md text-on-surface">Time Slot</th>
                                             <th class="px-6 py-4 font-label-md text-on-surface">Status</th>
-                                            <th class="px-6 py-4 font-label-md text-on-surface">OPD Type</th>
-                                            <th class="w-44 px-6 py-4 font-label-md text-on-surface text-center">Action</th>
+                                            <th class="w-44 px-6 py-4 font-label-md text-on-surface text-right">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-outline-variant/30">
@@ -433,15 +363,17 @@ $slots = [
                                             $isBooked    = $slot["status_type"] === "booked";
                                             ?>
                                             <tr class="<?= $isAvailable ? 'hover:bg-surface-container-low transition-colors group' : 'bg-surface-container-lowest/50 opacity-70' ?>">
+                                                <!-- TIME SLOT -->
                                                 <td class="px-6 py-4 text-left">
                                                     <div class="flex items-center gap-3">
                                                         <div class="w-2 h-2 rounded-full <?= $isAvailable ? 'bg-green-700' : ($isBooked ? 'bg-error' : ($isChecked ? 'bg-orange-700' : 'bg-green-700')) ?>"></div>
-                                                        <span class="font-bold <?= $isAvailable ? 'text-green-700' : ($isChecked ? 'text-orange-700' : ($isBooked ? 'text-red-700' : 'text-green-700')) ?>">
+                                                        <span class="font-bold text-base <?= $isAvailable ? 'text-green-700' : ($isChecked ? 'text-orange-700' : ($isBooked ? 'text-red-700' : 'text-green-700')) ?>">
                                                             <?= htmlspecialchars($slot["time"]) ?>
                                                         </span>
                                                     </div>
                                                 </td>
 
+                                                <!-- STATUS -->
                                                 <td class="px-6 py-4 text-left">
                                                     <?php if ($isAvailable): ?>
                                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200">
@@ -462,21 +394,11 @@ $slots = [
                                                     <?php endif; ?>
                                                 </td>
 
-                                                <td class="px-6 py-4 text-left">
-                                                    <select
-                                                        class="w-full max-w-[300px] px-3 py-2 border border-outline-variant rounded-lg"
-                                                        <?= (!$isAvailable) ? 'disabled' : '' ?>
-                                                    >
-                                                        <?php foreach ($slot["types"] as $type): ?>
-                                                            <option><?= htmlspecialchars($type) ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
-                                                </td>
-
+                                                <!-- ACTION -->
                                                 <td class="px-6 py-4 text-right">
                                                     <?php if ($isAvailable): ?>
                                                         <button
-                                                            class="bg-green-700 text-on-primary px-5 py-2 rounded-lg text-label-sm hover:bg-primary-container transition-all shadow-sm"
+                                                            class="bg-green-700 text-on-primary px-5 py-2 rounded-lg text-label-sm font-semibold hover:bg-green-800 transition-all shadow-sm cursor-pointer"
                                                             onclick="openBookingModal('<?= htmlspecialchars($slot["time"]) ?>')"
                                                             type="button"
                                                         >
@@ -484,7 +406,7 @@ $slots = [
                                                         </button>
                                                     <?php else: ?>
                                                         <button
-                                                            class="bg-outline-variant text-on-surface-variant/50 px-5 py-2 rounded-lg text-label-sm cursor-not-allowed"
+                                                            class="bg-outline-variant/50 text-on-surface-variant/50 px-5 py-2 rounded-lg text-label-sm font-semibold cursor-not-allowed"
                                                             disabled
                                                         >
                                                             Unavailable
@@ -611,9 +533,7 @@ $slots = [
     <span class="text-label-md font-medium">Booking cancelled. Slot remains available.</span>
 </div>
 
-<!-- ==========================================================
-            CLEAN BOOKING DETAILS MODAL (ONLY 2 FIELDS)
-========================================================== -->
+<!-- DETAILS MODAL (ONLY 2 FIELDS) -->
 <div id="bookingDetailsModal" class="fixed inset-0 hidden bg-black/40 z-[70] items-center justify-center p-4">
     <div class="bg-white rounded-2xl p-6 sm:p-7 w-[440px] max-w-[95%] shadow-2xl relative">
         <button
@@ -633,7 +553,7 @@ $slots = [
             <div class="flex justify-between items-center">
                 <span class="text-gray-500 font-medium">Allowed Booking Time</span>
                 <span id="bookingTime" class="font-bold text-gray-900">
-                    10:00 – 13:00
+                    10.00 – 13.00
                 </span>
             </div>
 
